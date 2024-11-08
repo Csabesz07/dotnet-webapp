@@ -2,6 +2,7 @@
 using Core.Converters;
 using Core.Models;
 using Core.Models.StudentRegistry;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Protocol.Request;
@@ -18,6 +19,7 @@ public class StudentController(StudentRegistryContext context, IConfiguration co
     private readonly StudentValidator _studentValidator = new();
     private readonly GradeValidator _gradeValidator = new();
 
+    [Authorize]
     [HttpPost]
     [ProducesResponseType(typeof(CreatedResult), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(BadRequestResult), StatusCodes.Status400BadRequest)]
@@ -49,6 +51,7 @@ public class StudentController(StudentRegistryContext context, IConfiguration co
         }
     }
 
+    [Authorize]
     [HttpPost("Grade")]
     [ProducesResponseType(typeof(CreatedResult), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(BadRequestResult), StatusCodes.Status400BadRequest)]
