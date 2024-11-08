@@ -16,10 +16,16 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<StudentRegistryContext>(options =>
 {
-    options.UseSqlite(connectionString);
+    options.UseSqlite(keepAliveConnection);
 }); 
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<StudentRegistryContext>();
+    dbContext.Database.EnsureCreated();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

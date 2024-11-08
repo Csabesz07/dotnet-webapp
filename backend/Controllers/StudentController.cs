@@ -1,5 +1,7 @@
 ﻿using Core.Models;
+using Core.Models.StudentRegistry;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Protocol.Request;
 using Protocol.Response;
 
@@ -38,5 +40,11 @@ public class StudentController(StudentRegistryContext context, IConfiguration co
     public async Task<ActionResult> GetStudentStatisticsList()
     {
         throw new NotImplementedException();
+    }
+
+    [HttpGet("Subject")]   
+    public async Task<ActionResult<List<Subject>>> GetSubjects()
+    {
+        return await _context.Subjects.ToListAsync();
     }
 }
