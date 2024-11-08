@@ -1,4 +1,5 @@
-﻿using Core.Models;
+﻿using BusinessLogic.Validators;
+using Core.Models;
 using Core.Models.StudentRegistry;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,8 @@ public class StudentController(StudentRegistryContext context, IConfiguration co
 {
     private readonly StudentRegistryContext _context = context;
     private readonly IConfiguration _configuration = configuration;
+    private readonly StudentValidator _studentValidator = new();
+    private readonly GradeValidator _gradeValidator = new();
 
     [HttpPost]
     [ProducesResponseType(typeof(CreatedResult), StatusCodes.Status201Created)]
