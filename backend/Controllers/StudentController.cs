@@ -100,9 +100,26 @@ public class StudentController(StudentRegistryContext context, IConfiguration co
 
     [HttpGet("List/Statistics")]
     [ProducesResponseType(typeof(StudentStatisticsListResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult> GetStudentStatisticsList()
     {
-        throw new NotImplementedException();
+        try
+        {
+            var studentList =
+                await _context.Students
+                .Include(s => s.Grades)
+                .Where(s => s.Grades != null && s.Grades.Count > 0)
+                .Select(s => s.ToStudentStatistic())
+                .ToListAsync();
+
+            studentList.Sort();
+
+            return Ok(studentList.StudentStatisticsListResponse());
+        }
+        catch (Exception ex)
+        {
+            return Problem(ex.Message);
+        }
     }
 
     [HttpGet("Subject")]

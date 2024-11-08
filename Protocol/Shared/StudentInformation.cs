@@ -37,7 +37,7 @@ public struct StudentInformation : IComparable<StudentInformation>
     /// Sorting function by name
     /// </summary>
     /// <param name="other">The student who the name should be compared to</param>
-    /// <returns>An int </returns>
+    /// <returns>An signed int which represents the position relative to this element</returns>
     public int CompareTo(StudentInformation other)
     {
         return Name.CompareTo(other.Name);

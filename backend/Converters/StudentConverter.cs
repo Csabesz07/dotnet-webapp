@@ -3,6 +3,7 @@ using Core.Models.StudentRegistry;
 using Protocol.Request;
 using Protocol.Response;
 using Protocol.Shared;
+using Protocol.Shared.Enum;
 
 namespace Core.Converters;
 
@@ -28,4 +29,16 @@ public static class StudentConverter
 
     public static StudentListResponse ToStudentListResponse(this List<StudentInformation> students) =>
         new(students);
+
+    public static StudentStatistic ToStudentStatistic(this Student student) =>
+        new()
+        {
+            Name = student.Name,
+            Avarage = student.Grades!.Average(s => (int)s.Grade),
+            FailCount = student.Grades!.Where(s => s.Grade == Grade.One).Count(),
+            BestGrade = student.Grades!.Select(s => s.Grade).Max(),
+        };
+
+    public static StudentStatisticsListResponse StudentStatisticsListResponse(this List<StudentStatistic> statistics) =>
+        new(statistics);
 }
