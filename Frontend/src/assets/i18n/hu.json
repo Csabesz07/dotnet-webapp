@@ -1,1 +1,14 @@
-{}
+{
+    "language": {
+        "hu": "Magyar",
+        "en": "English"
+    },
+    "login": {
+        "username": "Felhasználónév (admin)",
+        "password": "Jelszó (Enco.Interju-00)",
+        "enter_username": "Add meg a felhasználónevet",
+        "enter_password": "Add meg a jelszót",
+        "button_login": "Bejelentkezés",
+        "button_logout": "Kijelentkezés"
+    }
+}

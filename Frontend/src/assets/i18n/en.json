@@ -1,1 +1,14 @@
-{}
+{
+    "language": {
+        "hu": "Magyar",
+        "en": "English"
+    },
+    "login": {
+        "username": "Username (admin)",
+        "password": "Password (Enco.Interju-00)",
+        "enter_username": "Enter username",
+        "enter_password": "Enter password",
+        "button_login": "Login",
+        "button_logout": "Logout"
+    }
+}

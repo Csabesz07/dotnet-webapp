@@ -1,6 +1,6 @@
 {
   "name": "student-registry",
-  "version": "0.0.0",
+  "version": "17.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -18,7 +18,7 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
-    "@ng-bootstrap/ng-bootstrap": "^16.0.0-rc.2",
+    "@ng-bootstrap/ng-bootstrap": "^16.0.0",
     "@ngx-translate/core": "^16.0.3",
     "@ngx-translate/http-loader": "^16.0.0",
     "bootstrap": "^5.3.3",

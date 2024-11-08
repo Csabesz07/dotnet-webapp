@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { GradeCreatorComponent } from './grade-creator/grade-creator.component';
 import { LoginComponent } from './login/login.component';
