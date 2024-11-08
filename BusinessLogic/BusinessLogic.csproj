@@ -39,9 +39,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Converters\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Compile Include="Validators\GradeValidator.cs" />
     <Compile Include="Validators\StudentValidator.cs" />

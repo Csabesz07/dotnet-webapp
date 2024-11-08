@@ -1,4 +1,5 @@
 ﻿using BusinessLogic.Validators;
+using Core.Converters;
 using Core.Models;
 using Core.Models.StudentRegistry;
 using Microsoft.AspNetCore.Mvc;
@@ -19,16 +20,60 @@ public class StudentController(StudentRegistryContext context, IConfiguration co
 
     [HttpPost]
     [ProducesResponseType(typeof(CreatedResult), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(BadRequestResult), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult> PostStudent([FromBody] PostStudentRequest student)
     {
-        throw new NotImplementedException();
+        try
+        {
+            _studentValidator
+                .ValidateNewStudentName(student)
+                .ValidateNewStudentSemester(student)
+                .ValidateNewStudentMobileNumber(student);
+        }
+        catch (Exception ex)
+        { 
+            return BadRequest(ex.Message);
+        }
+
+        try
+        {
+            await _context.Students.AddAsync(student.ToStudent());
+            await _context.SaveChangesAsync();
+
+            return Created();
+        }
+        catch (Exception ex) 
+        { 
+            return Problem(ex.Message);
+        }
     }
 
     [HttpPost("Grade")]
     [ProducesResponseType(typeof(CreatedResult), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(BadRequestResult), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult> PostStudentGrade([FromBody] PostGradeRequest grade)
     {
-        throw new NotSupportedException();
+        try
+        {
+            _gradeValidator.ValidateGrade(grade);
+        }
+        catch (Exception ex) 
+        { 
+            return BadRequest(ex.Message);
+        }
+
+        try
+        {
+            await _context.StudentGrades.AddAsync(grade.ToStudentGrade());
+            await _context.SaveChangesAsync();
+
+            return Created();
+        } catch (Exception ex)
+        {
+            return Problem(ex.Message);
+        }
     }
 
     [HttpGet("List")]
