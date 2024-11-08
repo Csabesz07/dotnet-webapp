@@ -25,5 +25,14 @@ public class StudentRegistryContext : DbContext
         modelBuilder.ApplyConfiguration(new Student.Configuration());
         modelBuilder.ApplyConfiguration(new StudentGrade.Configuration());
         modelBuilder.ApplyConfiguration(new Subject.Configuration());
+
+        modelBuilder
+            .Entity<Subject>()
+            .HasData(
+                new Subject { Id = 1, Name = "Mathematics" },
+                new Subject { Id = 2, Name = "History" },
+                new Subject { Id = 3, Name = "Chemistry" },
+                new Subject { Id = 4, Name = "Programming" }
+            );
     }
 }

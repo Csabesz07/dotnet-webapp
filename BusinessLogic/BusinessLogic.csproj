@@ -4,12 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{475332E0-532C-4042-9B6D-16741447D053}</ProjectGuid>
+    <ProjectGuid>{2B59F0EB-06DD-4CCE-B49E-EDD76E42AFED}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Protocol</RootNamespace>
-    <AssemblyName>Protocol</AssemblyName>
+    <RootNamespace>BusinessLogic</RootNamespace>
+    <AssemblyName>BusinessLogic</AssemblyName>
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
-    <LangVersion>10.0</LangVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -40,14 +39,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Request\PostGradeRequest.cs" />
-    <Compile Include="Request\PostStudentRequest.cs" />
-    <Compile Include="Response\StudentListResponse.cs" />
-    <Compile Include="Response\StudentStatisticsListResponse.cs" />
-    <Compile Include="Shared\Enum\Grade.cs" />
-    <Compile Include="Shared\StudentInformation.cs" />
-    <Compile Include="Shared\StudentStatistic.cs" />
+    <Folder Include="Converters\" />
+    <Folder Include="Validators\" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
