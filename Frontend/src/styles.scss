@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+$color-darkgreen: #516360;
+$color-green: #6D9387;
+$color-gray: #CED8D8;
+$color-lightbrown: #EDD8CA;
+$color-brown: #D3C687;
+
+body, html {
+    width: 100dvw;
+    height: 100dvh;
+    margin: 0;
+}
+
+body {
+    box-sizing: border-box;
+    padding: 12px;
+    background-color: $color-lightbrown;
+}

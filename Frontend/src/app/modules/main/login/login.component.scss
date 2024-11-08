@@ -1,0 +1,10 @@
+@import '../../../../styles.scss';
+
+:host {
+    width: calc(100% - 6px);
+    height: fit-content;
+
+    border: $color-darkgreen solid 3px;
+    border-radius: 12px;
+    background-color: $color-gray;
+}
