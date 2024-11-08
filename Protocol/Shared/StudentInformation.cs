@@ -3,7 +3,7 @@ using System;
 
 namespace Protocol.Shared;
 
-public struct StudentInformation
+public struct StudentInformation : IComparable<StudentInformation>
 {
     public StudentInformation(string name, int semester, DateTimeOffset birthday, string mobileNumber)
     {
@@ -32,4 +32,14 @@ public struct StudentInformation
     /// The mobile number of the student
     /// </summary>
     public string MobileNumber { get; set; }
+
+    /// <summary>
+    /// Sorting function by name
+    /// </summary>
+    /// <param name="other">The student who the name should be compared to</param>
+    /// <returns>An int </returns>
+    public int CompareTo(StudentInformation other)
+    {
+        return Name.CompareTo(other.Name);
+    }
 }

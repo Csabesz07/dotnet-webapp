@@ -78,9 +78,24 @@ public class StudentController(StudentRegistryContext context, IConfiguration co
 
     [HttpGet("List")]
     [ProducesResponseType(typeof(StudentListResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult> GetStudentList()
     {
-        throw new NotImplementedException();
+        try
+        {
+            var studentList = 
+                await _context.Students
+                .Select(s => s.ToStudentInformation())
+                .ToListAsync();
+
+            studentList.Sort();
+
+            return Ok(studentList.ToStudentListResponse());
+        }
+        catch (Exception ex) 
+        {
+            return Problem(ex.Message);
+        }
     }
 
     [HttpGet("List/Statistics")]
@@ -90,7 +105,7 @@ public class StudentController(StudentRegistryContext context, IConfiguration co
         throw new NotImplementedException();
     }
 
-    [HttpGet("Subject")]   
+    [HttpGet("Subject")]
     public async Task<ActionResult<List<Subject>>> GetSubjects()
     {
         return await _context.Subjects.ToListAsync();
