@@ -1,4 +1,11 @@
+using Core.Models;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("DbConnectionString");
+var keepAliveConnection = new SqliteConnection(connectionString);
+keepAliveConnection.Open();
 
 // Add services to the container.
 
@@ -6,6 +13,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<StudentRegistryContext>(options =>
+{
+    options.UseSqlite(connectionString);
+}); 
 
 var app = builder.Build();
 
