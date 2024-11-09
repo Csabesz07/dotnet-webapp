@@ -1,7 +1,8 @@
 <button 
     type="button"
-    class="btn btn-link"
-    (click)="changeLangauge()">
+    class="btn btn-outline-primary"
+    (click)="changeLangauge()"
+    style="margin-bottom: 6px;">
     
     {{translate.currentLang == 'hu' ? ('language.hu' | translate) : ('language.en' | translate)}}
 </button>

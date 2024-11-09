@@ -7,4 +7,12 @@
     border: $color-darkgreen solid 3px;
     border-radius: 12px;
     background-color: $color-gray;
+
+    padding: 12px;
+
+    form {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 12px;
+    }
 }

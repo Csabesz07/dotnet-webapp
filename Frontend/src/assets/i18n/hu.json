@@ -10,5 +10,17 @@
         "enter_password": "Add meg a jelszót",
         "button_login": "Bejelentkezés",
         "button_logout": "Kijelentkezés"
+    },
+    "student_creation": {
+        "name": "Név",
+        "mobile_number": "Telefonszám",
+        "birthday": "Születésnap",
+        "semester": "Évfolyam",
+        "button_title": "Diák létrehozása"
+    },
+    "grade_assignment": {
+        "student": "Diák",
+        "Subject": "Tantárgy",
+        "Grade": "Jegy"
     }
 }

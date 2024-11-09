@@ -10,5 +10,17 @@
         "enter_password": "Enter password",
         "button_login": "Login",
         "button_logout": "Logout"
+    },
+    "student_creation": {
+        "name": "Name",
+        "mobile_number": "Mobile Number",
+        "birthday": "Birthday",
+        "semester": "Semester",
+        "button_title": "Create student"
+    },
+    "grade_assignment": {
+        "student": "Student",
+        "Subject": "Subject",
+        "Grade": "Grade"
     }
 }
