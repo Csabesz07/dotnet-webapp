@@ -33,9 +33,7 @@ public class AuthenticationHandler : AuthenticationHandler<AuthenticationSchemeO
 
         try
         {
-            var authHeader = Request.Headers["Authorization"].ToString();
-            var credentialBytes = Convert.FromBase64String(authHeader.Replace("Basic ", ""));
-            var credentials = Encoding.UTF8.GetString(credentialBytes).Split(':');
+            var credentials = Request.Headers["Authorization"].ToString().Split(',');
             var username = credentials[0];
             var password = credentials[1];
 

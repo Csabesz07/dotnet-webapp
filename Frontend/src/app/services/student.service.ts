@@ -82,6 +82,6 @@ export class StudentService {
   }
 
   private sortStudentList(): void {
-    
+    this._studentList.students.sort((a, b) => a.name.localeCompare(b.name));
   }  
 }

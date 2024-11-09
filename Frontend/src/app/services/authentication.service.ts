@@ -44,4 +44,12 @@ export class AuthenticationService {
   public get right(): Right {
     return this._right;
   }
+
+  public get username(): string | undefined {
+    return this._username;
+  }
+
+  public get password(): string | undefined {
+    return this._password;
+  }
 }
