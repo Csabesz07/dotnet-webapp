@@ -1,6 +1,8 @@
 {
     "common": {
-        "refresh": "Refresh"
+        "refresh": "Frissítés",
+        "error_retry": "Hiba! Próbáld újra!",
+        "invalid_data": "Hibás adatok!"
     },
     "language": {
         "hu": "Magyar",

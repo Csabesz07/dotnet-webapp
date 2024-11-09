@@ -3,6 +3,7 @@ import { AuthenticationService } from '../../../services/authentication.service'
 import { LoginFormGroup } from '../../../constants/form.entities';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
+import { Right } from '../../../enums/right.enum';
 
 @Component({
   selector: 'login',
@@ -15,6 +16,9 @@ export class LoginComponent {
     public authService: AuthenticationService,
     public translate: TranslateService,
   ) {}
+
+  /** Created to eliminate magic numbers in html template */
+  public right = Right;
 
   public loginFormGroup: LoginFormGroup = new FormGroup({
     username: new FormControl<string | null>(null, [Validators.required]),

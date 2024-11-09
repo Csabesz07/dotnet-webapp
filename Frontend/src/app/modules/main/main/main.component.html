@@ -1,7 +1,10 @@
 <div class="group-interaction">
     <login></login>
-    <student-creator *ngIf="authService.isLoggedIn"></student-creator>
-    <grade-creator *ngIf="authService.isLoggedIn"></grade-creator>
+
+    @if (authService.isLoggedIn && authService.right == rights.write) {
+        <student-creator></student-creator>
+        <grade-creator></grade-creator>
+    }
 </div>
 
 <div class="group-list">

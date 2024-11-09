@@ -39,6 +39,11 @@
         class="btn btn-primary"
         (click)="authService.isLoggedIn ? logout() : login()">
         
-        {{authService.isLoggedIn ? ('login.button_logout' | translate) : ('login.button_login' | translate)}}
+        {{authService.isLoggedIn ? 
+            (authService.right == right.read ? 
+                ('login.button_logout_read' | translate) : 
+                ('login.button_logout_write' | translate)
+            ) : 
+            ('login.button_login' | translate)}}
     </button>
 </form>

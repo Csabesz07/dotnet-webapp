@@ -1,6 +1,8 @@
 {
     "common": {
-        "refresh": "Refresh"
+        "refresh": "Refresh",
+        "error_retry": "Error! Try again!",
+        "invalid_data": "Invalid data!"
     },
     "language": {
         "hu": "Magyar",
@@ -12,7 +14,8 @@
         "enter_username": "Enter username",
         "enter_password": "Enter password",
         "button_login": "Login",
-        "button_logout": "Logout"
+        "button_logout_read": "Logout (Read)",
+        "button_logout_write": "Logout (Write)"
     },
     "student_creation": {
         "name": "Name",

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../../../services/authentication.service';
+import { Right } from '../../../enums/right.enum';
 
 @Component({
   selector: 'main',
@@ -7,6 +8,9 @@ import { AuthenticationService } from '../../../services/authentication.service'
   styleUrl: './main.component.scss'
 })
 export class MainComponent {
+
+  /** Created to eliminate magic numbers in html template */
+  public rights = Right;
 
   constructor(public authService: AuthenticationService) {}
 }

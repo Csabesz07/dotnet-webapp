@@ -19,12 +19,17 @@ export class StudentCreatorComponent {
   });
 
   public isCreating: boolean = false;
+
+  public isCreationSuccess: boolean = true;
+
+  public isInvalidData: boolean = false;
   
   constructor(private studentService: StudentService) {}
 
   public createStudent() {
     if(this.studentFormGroup.valid) {
       this.isCreating = true;
+      this.isInvalidData = false;
 
       this.studentService.postStudent(new PostStudentRequest(
         this.studentFormGroup.controls.name.value,
@@ -32,12 +37,17 @@ export class StudentCreatorComponent {
         this.studentFormGroup.controls.birthday.value,
         this.studentFormGroup.controls.mobileNumber.value,
       ))
-      .subscribe(() => {
+      .subscribe(res => {
+        if(res)
+          this.isCreationSuccess = true;
+        else
+          this.isCreationSuccess = false;
+
         this.isCreating = false;
       });
     }
     else {
-      
+      this.isInvalidData = true;
     }
   }
 }
