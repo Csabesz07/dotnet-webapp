@@ -34,5 +34,11 @@
         "semester": "Évfolyam",
         "birthday": "Születésnap",
         "mobile_number": "Telefonszám"
+    },
+    "student_statistics": {
+        "name": "Név",
+        "avarage": "Átlag",
+        "fail_count": "Egyesek száma",
+        "best_grade": "Legjobb jegy"
     }
 }

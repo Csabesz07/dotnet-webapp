@@ -34,5 +34,11 @@
         "semester": "Semester",
         "birthday": "Birthday",
         "mobile_number": "Mobile Number"
+    },
+    "student_statistics": {
+        "name": "Name",
+        "avarage": "Avarage",
+        "fail_count": "Fail Count",
+        "best_grade": "Best Grade"
     }
 }

@@ -51,7 +51,7 @@ export class StudentService {
     .pipe(
       map(r => {
         if(r.ok)
-          this.getStudentStatistics();
+          this.getStudentStatisticsList();
 
         return r.ok;
       }),
@@ -70,7 +70,7 @@ export class StudentService {
     );
   }
 
-  public getStudentStatistics(): Observable<StudentStatisticsList | null> {
+  public getStudentStatisticsList(): Observable<StudentStatisticsList | null> {
     return this.http.get<StudentStatisticsList>(API_BASE + 'Student/List/Statistics', {observe: 'response'})
     .pipe(
       map(r => {
