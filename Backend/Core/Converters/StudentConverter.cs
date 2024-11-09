@@ -21,6 +21,7 @@ public static class StudentConverter
     public static StudentInformation ToStudentInformation(this Student student) =>
         new()
         {
+            Id = student.Id,
             Name = student.Name,
             Semester = student.Semester,
             Birthday = student.Birthday,
@@ -33,6 +34,7 @@ public static class StudentConverter
     public static StudentStatistic ToStudentStatistic(this Student student) =>
         new()
         {
+            Id = student.Id,
             Name = student.Name,
             Avarage = student.Grades!.Average(s => (int)s.Grade),
             FailCount = student.Grades!.Where(s => s.Grade == Grade.One).Count(),

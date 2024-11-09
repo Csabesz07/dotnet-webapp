@@ -17,19 +17,23 @@ export class StudentCreatorComponent {
     birthday: new FormControl<Date>(new Date(Date.now()), {validators: [Validators.required], nonNullable: true}),
     mobileNumber: new FormControl<string>('', {validators: [Validators.required], nonNullable: true}),
   });
+
+  public isCreating: boolean = false;
   
   constructor(private studentService: StudentService) {}
 
   public createStudent() {
     if(this.studentFormGroup.valid) {
+      this.isCreating = true;
+
       this.studentService.postStudent(new PostStudentRequest(
         this.studentFormGroup.controls.name.value,
         this.studentFormGroup.controls.semester.value,
         this.studentFormGroup.controls.birthday.value,
         this.studentFormGroup.controls.mobileNumber.value,
       ))
-      .subscribe(res => {
-
+      .subscribe(() => {
+        this.isCreating = false;
       });
     }
     else {

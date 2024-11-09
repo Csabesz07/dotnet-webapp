@@ -16,6 +16,9 @@
         "mobile_number": "Mobile Number",
         "birthday": "Birthday",
         "semester": "Semester",
+        "enter_name": "Enter Name",
+        "enter_mobile_number": "Enter Mobile Number",
+        "enter_semester": "Enter Semester",
         "button_title": "Create student"
     },
     "grade_assignment": {

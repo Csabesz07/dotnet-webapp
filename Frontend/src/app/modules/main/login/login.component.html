@@ -8,28 +8,31 @@
 </button>
 
 <form [formGroup]="loginFormGroup">
-    <div class="form-group" *ngIf="!authService.isLoggedIn">
-        <label for="username">{{'login.username' | translate}}</label>
-        <input 
-            type="text" 
-            class="form-control" 
-            id="username" 
-            aria-describedby="emailHelp" 
-            [placeholder]="'login.enter_username' | translate"
-            formControlName="username"
-        >
-    </div>
-
-    <div class="form-group" *ngIf="!authService.isLoggedIn">
-        <label for="password">{{'login.password' | translate}}</label>
-        <input 
-            type="password" 
-            class="form-control" 
-            id="password" 
-            [placeholder]="'login.enter_password' | translate"
-            formControlName="password"
-        >
-    </div>  
+    
+    @if (!authService.isLoggedIn) {
+        <div class="form-group">
+            <label for="username">{{'login.username' | translate}}</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="username" 
+                aria-describedby="emailHelp" 
+                [placeholder]="'login.enter_username' | translate"
+                formControlName="username"
+            >
+        </div>
+        
+        <div class="form-group">
+            <label for="password">{{'login.password' | translate}}</label>
+            <input 
+                type="password" 
+                class="form-control" 
+                id="password" 
+                [placeholder]="'login.enter_password' | translate"
+                formControlName="password"
+            >
+        </div>  
+    }
 
     <button 
         type="button" 

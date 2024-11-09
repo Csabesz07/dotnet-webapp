@@ -6,13 +6,19 @@ namespace Protocol.Shared;
 
 public struct StudentStatistic : IComparable<StudentStatistic>
 {
-    public StudentStatistic(string name, double? avarage, int? failCount, Grade? bestGrade)
+    public StudentStatistic(int id, string name, double? avarage, int? failCount, Grade? bestGrade)
     {
+        Id = id;
         Name = name;
         Avarage = avarage;
         FailCount = failCount;
         BestGrade = bestGrade;
     }
+
+    /// <summary>
+    /// The database Id of the student
+    /// </summary>
+    public int Id { get; set; }
 
     /// <summary>
     /// The name of the student

@@ -16,6 +16,9 @@
         "mobile_number": "Telefonszám",
         "birthday": "Születésnap",
         "semester": "Évfolyam",
+        "enter_name": "Adj nevet",
+        "enter_mobile_number": "Add meg a telefonszámát",
+        "enter_semester": "Add meg az évfolyamot",
         "button_title": "Diák létrehozása"
     },
     "grade_assignment": {

@@ -6,6 +6,7 @@ import { API_BASE } from '../constants/api';
 import { PostGradeRequest } from '../models/request/postGradeRequest.model';
 import { StudentList } from '../models/student-list/studentList.model';
 import { StudentStatisticsList } from '../models/student-list/studentStatisticsList.model';
+import { Student } from '../models/student.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,17 +14,28 @@ import { StudentStatisticsList } from '../models/student-list/studentStatisticsL
 export class StudentService {
 
   /** The list of students */
-  private _students: StudentList = new StudentList([]);
+  private _studentList: StudentList = new StudentList([]);
 
   /** The list of student statistics */
-  private _studentStatistics: StudentStatisticsList = new StudentStatisticsList([]);
+  private _studentStatisticList: StudentStatisticsList = new StudentStatisticsList([]);
 
   constructor(private http: HttpClient) { }
 
   public postStudent(student: PostStudentRequest): Observable<boolean> {
-    return this.http.post(API_BASE + 'Student', student, {observe: 'response'})
+    return this.http.post<number>(API_BASE + 'Student', student, {observe: 'response'})
     .pipe(
-      map(r => r.ok),
+      map(r => {
+        if(r.ok)
+        {
+          this._studentList.students.push(
+            new Student(r.body!, student.name, student.semester, student.birthday, student.mobileNumber)
+          );
+
+          this.sortStudentList();
+        }
+
+        return r.ok;
+      }),
       catchError(() => of(false)),
     );
   }
@@ -31,7 +43,12 @@ export class StudentService {
   public postGrade(grade: PostGradeRequest): Observable<boolean> {
     return this.http.post(API_BASE + 'Student/Grade', grade, {observe: 'response'})
     .pipe(
-      map(r => r.ok),
+      map(r => {
+        if(r.ok)
+          this.getStudentStatistics();
+
+        return r.ok;
+      }),
       catchError(() => of(false)),
     );
   }
@@ -39,7 +56,10 @@ export class StudentService {
   public getStudentList(): Observable<StudentList | null> {
     return this.http.get<StudentList>(API_BASE + 'Student/List', {observe: 'response'})
     .pipe(
-      map(r => r.body),
+      map(r => {
+        this._studentList.students = r.body?.students ?? [];
+        return this._studentList;
+      }),
       catchError(() => of(null))
     );
   }
@@ -47,8 +67,15 @@ export class StudentService {
   public getStudentStatistics(): Observable<StudentStatisticsList | null> {
     return this.http.get<StudentStatisticsList>(API_BASE + 'Student/List/Statistics', {observe: 'response'})
     .pipe(
-      map(r => r.body),
+      map(r => {
+        this._studentStatisticList.students = r.body?.students ?? [];
+        return this._studentStatisticList;
+      }),
       catchError(() => of(null))
     );
   }
+
+  private sortStudentList(): void {
+    
+  }  
 }

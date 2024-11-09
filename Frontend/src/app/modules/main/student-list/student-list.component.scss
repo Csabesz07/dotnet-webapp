@@ -2,9 +2,14 @@
 
 :host {
     width: calc(100% - 6px);
-    height: fit-content;
+    height: 50%;
+    min-height: 400px;
 
     border: $color-darkgreen solid 3px;
     border-radius: 12px;
     background-color: $color-gray;
+
+    @media screen and (width > 1400px) {
+        height: 100%;
+    }
 }

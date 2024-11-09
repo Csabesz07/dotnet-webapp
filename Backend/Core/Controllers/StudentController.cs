@@ -21,10 +21,10 @@ public class StudentController(StudentRegistryContext context, IConfiguration co
 
     [Authorize]
     [HttpPost]
-    [ProducesResponseType(typeof(CreatedResult), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(CreatedResult), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(BadRequestResult), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult> PostStudent([FromBody] PostStudentRequest student)
+    public async Task<ActionResult<int>> PostStudent([FromBody] PostStudentRequest student)
     {
         try
         {
@@ -40,10 +40,11 @@ public class StudentController(StudentRegistryContext context, IConfiguration co
 
         try
         {
-            await _context.Students.AddAsync(student.ToStudent());
+            var newStudent = student.ToStudent();
+            await _context.Students.AddAsync(newStudent);
             await _context.SaveChangesAsync();
 
-            return Created();
+            return Ok(newStudent.Id);
         }
         catch (Exception ex) 
         { 

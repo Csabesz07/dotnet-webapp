@@ -14,4 +14,10 @@ body {
     box-sizing: border-box;
     padding: 12px;
     background-color: $color-lightbrown;
+
+    overflow-y: auto;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }

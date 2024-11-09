@@ -5,13 +5,19 @@ namespace Protocol.Shared;
 
 public struct StudentInformation : IComparable<StudentInformation>
 {
-    public StudentInformation(string name, int semester, DateTimeOffset birthday, string mobileNumber)
+    public StudentInformation(int id, string name, int semester, DateTimeOffset birthday, string mobileNumber)
     {
+        Id = id;
         Name = name;
         Semester = semester;
         Birthday = birthday;
         MobileNumber = mobileNumber;
     }
+
+    /// <summary>
+    /// The database Id of the student
+    /// </summary>
+    public int Id { get; set; }
 
     /// <summary>
     /// The student's name
