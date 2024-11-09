@@ -13,10 +13,7 @@ import { PostGradeRequest } from '../../../models/request/postGradeRequest.model
 })
 export class GradeCreatorComponent {
 
-  constructor(
-    public studentServcie: StudentService,
-    private change: ChangeDetectorRef,
-  ) {}
+  constructor(public studentServcie: StudentService) {}
 
   /** Created in order to eliminate the magic numbers in the html template */
   public grade = Grade;
@@ -52,8 +49,10 @@ export class GradeCreatorComponent {
         else
           this.isCreationSuccess = false;
 
-        this.isCreating = false;
-        this.change.detectChanges();
+        this.studentServcie.getStudentStatisticsList()
+        .subscribe(() => {
+          this.isCreating = false;        
+        });
       });
     }
     else {

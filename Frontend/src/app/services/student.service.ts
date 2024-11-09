@@ -49,12 +49,7 @@ export class StudentService {
   public postGrade(grade: PostGradeRequest): Observable<boolean> {
     return this.http.post(API_BASE + 'Student/Grade', grade, {observe: 'response'})
     .pipe(
-      map(r => {
-        if(r.ok)
-          this.getStudentStatisticsList();
-
-        return r.ok;
-      }),
+      map(r => r.ok),
       catchError(() => of(false)),
     );
   }
