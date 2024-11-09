@@ -1,4 +1,7 @@
 {
+    "common": {
+        "refresh": "Refresh"
+    },
     "language": {
         "hu": "Magyar",
         "en": "English"
@@ -25,5 +28,11 @@
         "student": "Diák",
         "Subject": "Tantárgy",
         "Grade": "Jegy"
+    },
+    "student_list": {
+        "name": "Név",
+        "semester": "Évfolyam",
+        "birthday": "Születésnap",
+        "mobile_number": "Telefonszám"
     }
 }

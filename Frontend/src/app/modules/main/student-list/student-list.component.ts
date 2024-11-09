@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StudentService } from '../../../services/student.service';
 
 @Component({
   selector: 'student-list',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class StudentListComponent {
 
+  public isRefreshing: boolean = false;
+
+  constructor(public studentService: StudentService) {}
+
+  public refresh(): void {
+    this.isRefreshing = true;
+    this.studentService.getStudentList()
+    .subscribe(() => {
+      this.isRefreshing = false;
+    });
+  }
 }

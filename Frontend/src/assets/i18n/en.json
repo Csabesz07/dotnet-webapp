@@ -1,4 +1,7 @@
 {
+    "common": {
+        "refresh": "Refresh"
+    },
     "language": {
         "hu": "Magyar",
         "en": "English"
@@ -25,5 +28,11 @@
         "student": "Student",
         "Subject": "Subject",
         "Grade": "Grade"
+    },
+    "student_list": {
+        "name": "Name",
+        "semester": "Semester",
+        "birthday": "Birthday",
+        "mobile_number": "Mobile Number"
     }
 }

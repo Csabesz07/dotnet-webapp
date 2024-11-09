@@ -15,9 +15,15 @@ export class StudentService {
 
   /** The list of students */
   private _studentList: StudentList = new StudentList([]);
+  public get studentList() {
+    return this._studentList.students;
+  }
 
   /** The list of student statistics */
   private _studentStatisticList: StudentStatisticsList = new StudentStatisticsList([]);
+  public get studentStatisticList() {
+    return this._studentStatisticList.students;
+  }
 
   constructor(private http: HttpClient) { }
 
