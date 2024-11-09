@@ -11,3 +11,9 @@ export type StudentFormGroup = FormGroup<{
   birthday: FormControl<Date>;
   mobileNumber: FormControl<string>;
 }>;
+
+export type GradeFormGroup = FormGroup<{
+  studentId: FormControl<number | null>;
+  subjectId: FormControl<number | null>;
+  grade: FormControl<number | null>;
+}>;

@@ -29,8 +29,16 @@
     },
     "grade_assignment": {
         "student": "Student",
-        "Subject": "Subject",
-        "Grade": "Grade"
+        "subject": "Subject",
+        "grade": "Grade",
+        "enter_grade": "Enter Grade (1-5)",
+        "button_title": "Assign grade",
+        "subjects": {
+            "math": "Mathematics",
+            "history": "History",
+            "chemistry": "Chemistry",
+            "programming": "Programming"
+        }
     },
     "student_list": {
         "name": "Name",

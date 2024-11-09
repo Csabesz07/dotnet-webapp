@@ -73,7 +73,7 @@ export class StudentService {
   public getStudentStatisticsList(): Observable<StudentStatisticsList | null> {
     return this.http.get<StudentStatisticsList>(API_BASE + 'Student/List/Statistics', {observe: 'response'})
     .pipe(
-      map(r => {
+      map(r => {        
         this._studentStatisticList.students = r.body?.students ?? [];
         return this._studentStatisticList;
       }),

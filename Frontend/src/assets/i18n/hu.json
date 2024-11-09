@@ -14,7 +14,8 @@
         "enter_username": "Add meg a felhasználónevet",
         "enter_password": "Add meg a jelszót",
         "button_login": "Bejelentkezés",
-        "button_logout": "Kijelentkezés"
+        "button_logout_read": "Kijelentkezés (Olvasás)",
+        "button_logout_write": "kijelentkezés (Írás)"
     },
     "student_creation": {
         "name": "Név",
@@ -28,8 +29,16 @@
     },
     "grade_assignment": {
         "student": "Diák",
-        "Subject": "Tantárgy",
-        "Grade": "Jegy"
+        "subject": "Tantárgy",
+        "grade": "Jegy",
+        "enter_grade": "Adj jegyet (1-5)",
+        "button_title": "Jegy hozzáadása",
+        "subjects": {
+            "math": "Matek",
+            "history": "Történelem",
+            "chemistry": "Kémia",
+            "programming": "Programozás"
+        }
     },
     "student_list": {
         "name": "Név",

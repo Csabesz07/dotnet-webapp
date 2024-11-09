@@ -1,1 +1,59 @@
-<p>grade-creator works!</p>
+<form [formGroup]="gradeFormGroup">
+    <div class="form-group">
+        <label for="exampleInputEmail1">{{'grade_assignment.student' | translate}}</label>
+        <select 
+            class="form-select form-control" 
+            aria-label="Default select example" 
+            id="exampleInputEmail1" 
+            aria-describedby="emailHelp" 
+            placeholder="Enter email"
+            formControlName="studentId">
+
+            @for (student of studentServcie.studentList; track $index) {
+                <option [value]="student.id">{{student.name}}</option>
+            }
+        </select>        
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">{{'grade_assignment.subject' | translate}}</label>
+        <select 
+            class="form-select form-control" 
+            aria-label="Default select example" 
+            id="exampleInputEmail1" 
+            aria-describedby="emailHelp"
+            formControlName="subjectId">
+
+            <option [value]="subject.Mathematics">{{'grade_assignment.subjects.math' | translate}}</option>
+            <option [value]="subject.Chemistry">{{'grade_assignment.subjects.chemistry' | translate}}</option>
+            <option [value]="subject.History">{{'grade_assignment.subjects.history' | translate}}</option>
+            <option [value]="subject.Programming">{{'grade_assignment.subjects.programming' | translate}}</option>
+        </select>        
+    </div>
+
+    <div class="form-group">
+        <label for="grade">{{'grade_assignment.grade' | translate}}</label>
+        <input 
+            id="grade" 
+            class="form-control" 
+            type="number" 
+            formControlName="grade" 
+            [placeholder]="'grade_assignment.enter_grade' | translate"/>
+    </div>
+        
+    @if (!isCreating) {
+        <button type="submit" (click)="assignGrade()" class="btn btn-primary">
+            @if (isCreationSuccess && !isInvalidData) {
+                {{'grade_assignment.button_title' | translate}}
+            } @else if (isCreationSuccess && isInvalidData) {
+                {{'common.invalid_data' | translate}}
+            } @else {
+                {{ 'common.error_retry' | translate }}
+            }
+        </button>
+    } @else {
+        <div class="spinner-border text-primary" role="status" style="margin: auto;">
+            <span class="sr-only"></span>
+        </div>
+    }  
+</form>
