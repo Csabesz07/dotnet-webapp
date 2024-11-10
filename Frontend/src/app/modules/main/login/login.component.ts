@@ -3,7 +3,7 @@ import { AuthenticationService } from '../../../services/authentication.service'
 import { LoginFormGroup } from '../../../constants/form.entities';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { Right } from '../../../enums/right.enum';
+import { AuthenticationRequest } from '../../../models/request/authentication.request';
 
 @Component({
   selector: 'login',
@@ -17,8 +17,10 @@ export class LoginComponent {
     public translate: TranslateService,
   ) {}
 
-  /** Created to eliminate magic numbers in html template */
-  public right = Right;
+  public isValidatingCredentials: boolean = false;
+
+  /** Wether the last login attempt was a success or not */
+  public isLoginSuccess: boolean = true;
 
   public loginFormGroup: LoginFormGroup = new FormGroup({
     username: new FormControl<string | null>(null, [Validators.required]),
@@ -35,13 +37,16 @@ export class LoginComponent {
   public login(): void {
     if(this.loginFormGroup.valid)
     {
-      this.authService.login(
+      this.isValidatingCredentials = true;
+      this.authService.login(new AuthenticationRequest(
         this.loginFormGroup.controls.username.value!,
         this.loginFormGroup.controls.password.value!,
-      );
-
-      this.loginFormGroup.reset();
-      return;
+      ))
+      .subscribe(res => {
+        this.isLoginSuccess = res;
+        this.loginFormGroup.reset();
+        this.isValidatingCredentials = false;        
+      });
     }    
   }
 

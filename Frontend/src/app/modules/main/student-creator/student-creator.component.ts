@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { StudentFormGroup } from '../../../constants/form.entities';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { StudentService } from '../../../services/student.service';
-import { PostStudentRequest } from '../../../models/request/postStudentRequest.model';
+import { PostStudentRequest } from '../../../models/request/post-student.request';
 
 @Component({
   selector: 'student-creator',

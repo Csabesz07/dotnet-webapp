@@ -34,16 +34,21 @@
         </div>  
     }
 
-    <button 
-        type="button" 
-        class="btn btn-primary"
-        (click)="authService.isLoggedIn ? logout() : login()">
-        
-        {{authService.isLoggedIn ? 
-            (authService.right == right.read ? 
-                ('login.button_logout_read' | translate) : 
-                ('login.button_logout_write' | translate)
-            ) : 
-            ('login.button_login' | translate)}}
-    </button>
+    @if (!isValidatingCredentials) {
+        <button 
+            type="button" 
+            class="btn btn-primary"
+            (click)="authService.isLoggedIn ? logout() : login()">
+            
+            {{authService.isLoggedIn ? 
+                ('login.button_logout' | translate) : 
+                    (isLoginSuccess ? 
+                    ('login.button_login_success' | translate) : 
+                     'login.button_login_fail' | translate)}}
+        </button>
+    } @else {
+        <div class="spinner-border text-primary" role="status" style="margin: auto;">
+            <span class="sr-only"></span>
+        </div>
+    }
 </form>

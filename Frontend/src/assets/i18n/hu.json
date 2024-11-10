@@ -13,9 +13,9 @@
         "password": "Jelszó (Enco.Interju-00)",
         "enter_username": "Add meg a felhasználónevet",
         "enter_password": "Add meg a jelszót",
-        "button_login": "Bejelentkezés",
-        "button_logout_read": "Kijelentkezés (Olvasás)",
-        "button_logout_write": "kijelentkezés (Írás)"
+        "button_login_success": "Bejelentkezés",
+        "button_login_fail": "Bejelentkezés sikertelen, próbáld újra!",
+        "button_logout": "Kijelentkezés"
     },
     "student_creation": {
         "name": "Név",

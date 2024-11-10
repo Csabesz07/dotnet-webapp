@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
-import { PostStudentRequest } from '../models/request/postStudentRequest.model';
+import { PostStudentRequest } from '../models/request/post-student.request';
 import { API_BASE } from '../constants/api';
-import { PostGradeRequest } from '../models/request/postGradeRequest.model';
+import { PostGradeRequest } from '../models/request/post-grade.request';
 import { StudentList } from '../models/student-list/studentList.model';
 import { StudentStatisticsList } from '../models/student-list/studentStatisticsList.model';
 import { Student } from '../models/student.model';

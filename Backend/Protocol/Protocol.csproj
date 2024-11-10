@@ -41,6 +41,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Request\AuthenticationRequest.cs" />
     <Compile Include="Request\PostGradeRequest.cs" />
     <Compile Include="Request\PostStudentRequest.cs" />
     <Compile Include="Response\StudentListResponse.cs" />

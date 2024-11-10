@@ -4,7 +4,7 @@ import { Subject } from '../../../enums/subject.enum';
 import { GradeFormGroup } from '../../../constants/form.entities';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { StudentService } from '../../../services/student.service';
-import { PostGradeRequest } from '../../../models/request/postGradeRequest.model';
+import { PostGradeRequest } from '../../../models/request/post-grade.request';
 
 @Component({
   selector: 'grade-creator',

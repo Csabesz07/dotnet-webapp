@@ -1,48 +1,45 @@
 import { Injectable } from '@angular/core';
-import { Right } from '../enums/right.enum';
-import { WRITE_PASSWORD, WRITE_USERNAME } from '../constants/api';
+import { API_BASE } from '../constants/api';
+import { catchError, map, Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { AuthenticationRequest } from '../models/request/authentication.request';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  /** The username which will be used for authentication */
-  private _username?: string;
-
-  /** The password which will be used for authentication */
-  private _password?: string;
-
   /** Wether the user is currently logged in or not */
   private _isLoggedIn: boolean = false;
 
-  private _right: Right = Right.read;
+  private _username?: string;
 
-  constructor() { }
+  private _password?: string;
 
-  public login(username: string, password: string): void {
-    this._username = username;
-    this._password = password;
-    this._isLoggedIn = true;
+  constructor(private http: HttpClient) { }
 
-    if(username == WRITE_USERNAME && password == WRITE_PASSWORD) {
-      this._right = Right.write;
-    }
+  public login(credentials: AuthenticationRequest): Observable<boolean> {
+    this._username = credentials.username;
+    this._password = credentials.password;
+
+    return this.http.post(API_BASE + 'Authentication/Login', credentials, {observe: 'response'})
+    .pipe(
+      map(res => {
+        if(res.ok)
+          this._isLoggedIn = true;
+
+        return res.ok;
+      }),
+      catchError(() => of(false))
+    );
   }
 
   public logout(): void {
-    this._username = undefined;
-    this._password = undefined;
     this._isLoggedIn = false;
-    this._right = Right.read;
   }
 
   public get isLoggedIn(): boolean {
     return this._isLoggedIn;
-  }
-
-  public get right(): Right {
-    return this._right;
   }
 
   public get username(): string | undefined {

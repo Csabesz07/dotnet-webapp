@@ -13,9 +13,9 @@
         "password": "Password (Enco.Interju-00)",
         "enter_username": "Enter username",
         "enter_password": "Enter password",
-        "button_login": "Login",
-        "button_logout_read": "Logout (Read)",
-        "button_logout_write": "Logout (Write)"
+        "button_login_success": "Login",
+        "button_login_fail": "Login fail, try again!",
+        "button_logout": "Logout"
     },
     "student_creation": {
         "name": "Name",

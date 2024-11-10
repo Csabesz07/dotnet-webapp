@@ -1,7 +1,7 @@
 <div class="group-interaction">
     <login></login>
 
-    @if (authService.isLoggedIn && authService.right == rights.write) {
+    @if (authService.isLoggedIn) {
         <student-creator></student-creator>
         <grade-creator></grade-creator>
     }
