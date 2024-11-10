@@ -14,7 +14,7 @@ export class StudentCreatorComponent {
   public studentFormGroup: StudentFormGroup = new FormGroup({
     name: new FormControl<string>('', {validators: [Validators.required], nonNullable: true}),
     semester: new FormControl<number>(1, {validators: [Validators.required], nonNullable: true}),
-    birthday: new FormControl<Date>(new Date(Date.now()), {validators: [Validators.required], nonNullable: true}),
+    birthday: new FormControl<Date | null>(null, [Validators.required]),
     mobileNumber: new FormControl<string>('', {validators: [Validators.required], nonNullable: true}),
   });
 
@@ -34,7 +34,7 @@ export class StudentCreatorComponent {
       this.studentService.postStudent(new PostStudentRequest(
         this.studentFormGroup.controls.name.value,
         this.studentFormGroup.controls.semester.value,
-        this.studentFormGroup.controls.birthday.value,
+        this.studentFormGroup.controls.birthday.value!,
         this.studentFormGroup.controls.mobileNumber.value,
       ))
       .subscribe(res => {

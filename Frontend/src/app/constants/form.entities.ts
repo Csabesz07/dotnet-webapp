@@ -8,7 +8,7 @@ export type LoginFormGroup = FormGroup<{
 export type StudentFormGroup = FormGroup<{
   name: FormControl<string>;
   semester: FormControl<number>;  
-  birthday: FormControl<Date>;
+  birthday: FormControl<Date | null>;
   mobileNumber: FormControl<string>;
 }>;
 
