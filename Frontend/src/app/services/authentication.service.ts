@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { API_BASE } from '../constants/api';
+import { API_BASE, PASSWORD, USERNAME } from '../constants/api';
 import { catchError, map, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationRequest } from '../models/request/authentication.request';
@@ -10,17 +10,13 @@ import { AuthenticationRequest } from '../models/request/authentication.request'
 export class AuthenticationService {
 
   /** Wether the user is currently logged in or not */
-  private _isLoggedIn: boolean = false;
-
-  private _username?: string;
-
-  private _password?: string;
+  private _isLoggedIn: boolean = false;  
 
   constructor(private http: HttpClient) { }
 
   public login(credentials: AuthenticationRequest): Observable<boolean> {
-    this._username = credentials.username;
-    this._password = credentials.password;
+    window.localStorage.setItem(USERNAME, credentials.username);
+    window.localStorage.setItem(PASSWORD, credentials.password);
 
     return this.http.post(API_BASE + 'Authentication/Login', credentials, {observe: 'response'})
     .pipe(
@@ -35,18 +31,12 @@ export class AuthenticationService {
   }
 
   public logout(): void {
+    window.localStorage.removeItem(USERNAME);
+    window.localStorage.removeItem(PASSWORD);    
     this._isLoggedIn = false;
   }
 
   public get isLoggedIn(): boolean {
     return this._isLoggedIn;
-  }
-
-  public get username(): string | undefined {
-    return this._username;
-  }
-
-  public get password(): string | undefined {
-    return this._password;
   }
 }
