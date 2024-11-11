@@ -12,10 +12,10 @@ import { PostStudentRequest } from '../../../models/request/post-student.request
 export class StudentCreatorComponent {
   
   public studentFormGroup: StudentFormGroup = new FormGroup({
-    name: new FormControl<string>('', {validators: [Validators.required], nonNullable: true}),
-    semester: new FormControl<number>(1, {validators: [Validators.required], nonNullable: true}),
+    name: new FormControl<string>('', {validators: [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')], nonNullable: true}),
+    semester: new FormControl<number>(1, {validators: [Validators.required, Validators.pattern('^[0-9]*$')], nonNullable: true}),
     birthday: new FormControl<Date | null>(null, [Validators.required]),
-    mobileNumber: new FormControl<string>('', {validators: [Validators.required], nonNullable: true}),
+    mobileNumber: new FormControl<string>('', {validators: [Validators.required, Validators.pattern('^[0-9]*$')], nonNullable: true}),
   });
 
   public isCreating: boolean = false;

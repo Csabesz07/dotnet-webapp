@@ -30,7 +30,7 @@ export class GradeCreatorComponent {
   public gradeFormGroup: GradeFormGroup = new FormGroup({
     studentId: new FormControl<number | null>(null, [Validators.required]),
     subjectId: new FormControl<number | null>(null, [Validators.required]),
-    grade: new FormControl<number | null>(null, [Validators.required]),
+    grade: new FormControl<number | null>(null, [Validators.required, Validators.min(1), Validators.max(5)]),
   });
 
   public assignGrade() {

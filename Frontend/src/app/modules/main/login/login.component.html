@@ -13,8 +13,8 @@
         <div class="form-group">
             <label for="username">{{'login.username' | translate}}</label>
             <input 
-                type="text" 
-                class="form-control" 
+                type="text"
+                [class]="'form-control' + (loginFormGroup.controls.username.invalid && !isLoginSuccess ? ' is-invalid' : '')" 
                 id="username" 
                 aria-describedby="emailHelp" 
                 [placeholder]="'login.enter_username' | translate"
@@ -26,7 +26,7 @@
             <label for="password">{{'login.password' | translate}}</label>
             <input 
                 type="password" 
-                class="form-control" 
+                [class]="'form-control' + (loginFormGroup.controls.password.invalid && !isLoginSuccess ? ' is-invalid' : '')" 
                 id="password" 
                 [placeholder]="'login.enter_password' | translate"
                 formControlName="password"
